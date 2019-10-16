@@ -4,7 +4,10 @@ import (
 	"math"
 )
 
+// Value type
 type Value int
+
+// Key type
 type Key string
 
 func isPrime(n uint) bool {
@@ -23,6 +26,7 @@ func isPrime(n uint) bool {
 	return nd == 0
 }
 
+// FindNextPrime finds the smallest prime number bigger or equal to n
 func FindNextPrime(n uint) uint {
 	if isPrime(n) {
 		return n
@@ -31,6 +35,7 @@ func FindNextPrime(n uint) uint {
 	return FindNextPrime(n + 1)
 }
 
+// Hash hashes the key
 func Hash(key Key, size uint) uint {
 	var hashVal uint
 

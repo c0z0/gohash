@@ -10,7 +10,7 @@ type hashListItem struct {
 	next  *hashListItem
 }
 
-func (h *hashListItem) Append(value utils.Value, key utils.Key) {
+func (h *hashListItem) append(value utils.Value, key utils.Key) {
 	if h.next == nil {
 		newListItem := hashListItem{value: value, key: key}
 		h.next = &newListItem
@@ -18,21 +18,21 @@ func (h *hashListItem) Append(value utils.Value, key utils.Key) {
 		return
 	}
 
-	h.next.Append(value, key)
+	h.next.append(value, key)
 }
 
-func (h *hashListItem) Find(key utils.Key) *utils.Value {
+func (h *hashListItem) find(key utils.Key) *utils.Value {
 	if h.key == key {
 		return &h.value
 	}
 
 	if h.next != nil {
-		return h.next.Find(key)
+		return h.next.find(key)
 	}
 
 	return nil
 }
 
-func CreateList(value utils.Value, key utils.Key) *hashListItem {
+func createList(value utils.Value, key utils.Key) *hashListItem {
 	return &hashListItem{value: value, key: key}
 }

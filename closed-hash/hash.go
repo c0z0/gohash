@@ -18,6 +18,7 @@ type hashItem struct {
 	key    utils.Key
 }
 
+// HashMap struct
 type HashMap struct {
 	size  uint
 	items []hashItem
@@ -27,6 +28,7 @@ func resolution(index uint) uint {
 	return index * index
 }
 
+// Put Saves an object to the map
 func (h *HashMap) Put(value utils.Value, key utils.Key) {
 	index := utils.Hash(key, h.size)
 
@@ -43,6 +45,7 @@ func (h *HashMap) Put(value utils.Value, key utils.Key) {
 
 }
 
+// Get Returns the object from the map
 func (h *HashMap) Get(key utils.Key) utils.Value {
 	index := utils.Hash(key, h.size)
 
@@ -56,6 +59,7 @@ func (h *HashMap) Get(key utils.Key) utils.Value {
 	return h.items[index].value
 }
 
+// CreateHash Creates a hash of size
 func CreateHash(size uint) HashMap {
 	pSize := utils.FindNextPrime(size)
 	h := HashMap{size: pSize, items: make([]hashItem, pSize)}
